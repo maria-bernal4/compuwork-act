@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="10" xmlns:fx="http://javafx.com/fxml" 
+      fx:controller="com.compuwork.controlador.MainController">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+
+    <HBox spacing="20">
+        <!-- Panel izquierdo para formulario -->
+        <VBox spacing="10" minWidth="400">
+            <Label text="Gestión de Empleados" style="-fx-font-size: 18; -fx-font-weight: bold;"/>
+            
+            <Label text="Departamento:"/>
+            <ComboBox fx:id="comboDepartamentos" maxWidth="Infinity"/>
+            
+            <Label text="Datos del Empleado"/>
+            <GridPane vgap="5" hgap="5">
+                <Label text="Nombre:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                <TextField fx:id="txtNombre" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                
+                <Label text="Apellido:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                <TextField fx:id="txtApellido" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                
+                <Label text="DNI:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                <TextField fx:id="txtDni" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                
+                <Label text="Fecha Contratación:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                <DatePicker fx:id="fechaContratacion" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                
+                <Label text="Salario Base:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+                <TextField fx:id="txtSalarioBase" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+            </GridPane>
+            
+            <HBox spacing="20">
+                <RadioButton fx:id="rbPermanente" text="Empleado Permanente" selected="true"/>
+                <RadioButton fx:id="rbTemporal" text="Empleado Temporal"/>
+            </HBox>
+            
+            <VBox fx:id="panelPermanente" spacing="5">
+                <Label text="Bonificación por Antigüedad:"/>
+                <TextField fx:id="txtBonificacionAntiguedad"/>
+            </VBox>
+            
+            <VBox fx:id="panelTemporal" spacing="5" visible="false">
+                <Label text="Fecha Fin Contrato:"/>
+                <DatePicker fx:id="fechaFinContrato"/>
+                <Label text="Bonificación por Proyecto:"/>
+                <TextField fx:id="txtBonificacionProyecto"/>
+            </VBox>
+            
+            <Button text="Agregar Empleado" onAction="#agregarEmpleado" maxWidth="Infinity"/>
+        </VBox>
+        
+        <!-- Panel derecho para lista y reportes -->
+        <VBox spacing="10" HBox.hgrow="ALWAYS">
+            <Label text="Lista de Empleados" style="-fx-font-size: 14; -fx-font-weight: bold;"/>
+            <ListView fx:id="listaEmpleados" VBox.vgrow="ALWAYS"/>
+            
+            <Button text="Generar Reporte" onAction="#generarReporte" maxWidth="Infinity"/>
+            
+            <Label text="Reporte" style="-fx-font-size: 14; -fx-font-weight: bold;"/>
+            <TextArea fx:id="areaReporte" VBox.vgrow="ALWAYS" wrapText="true"/>
+        </VBox>
+    </HBox>
+</VBox>
